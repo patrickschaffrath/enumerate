@@ -94,7 +94,7 @@ func hasEnumerateAnnotation(commentGroup *ast.CommentGroup) bool {
 }
 
 func writeOutput(pkg string, typedConstsToEnumerate map[string][]string, outputPath string) {
-	enumeratedBlocks := make([]string, len(typedConstsToEnumerate))
+	enumeratedBlocks := []string{}
 	for typ, constNames := range typedConstsToEnumerate {
 		if len(constNames) == 0 {
 			continue
@@ -112,6 +112,9 @@ func writeOutput(pkg string, typedConstsToEnumerate map[string][]string, outputP
 				v, ok := a.(%s)
 				return ok && slices.Contains(Enumerated%ss, v)
 			}`, typ, typ, strings.Join(lines, "\n"), typ, typ, typ))
+	}
+	if len(enumeratedBlocks) == 0 {
+		return
 	}
 
 	code := fmt.Sprintf(`
