@@ -6,6 +6,7 @@ var EnumeratedMyStrings = []MyString{
 	MyStringThis,
 	MyStringIs,
 	MyStringFine,
+	MyStringToo,
 }
 
 func IsMyString(a any) bool {
