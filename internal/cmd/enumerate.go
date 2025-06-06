@@ -8,7 +8,7 @@ import (
 	"github.com/patrickschaffrath/enumerate/internal/enumerator"
 )
 
-const version = "v0.0.0"
+const version = "v1.0.1"
 
 func Run() {
 	flag.Parse()
